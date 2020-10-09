@@ -4,8 +4,6 @@ pipeline {
     options {
         skipDefaultCheckout(true)
     }
-
-    tools { nodejs "node" }
  
 
     stages {
