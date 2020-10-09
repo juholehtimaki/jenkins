@@ -36,7 +36,7 @@ pipeline {
         always {
             sh '''
             set -x
-            make docker stop app
+            make docker-stop app
             '''
         }
     }
