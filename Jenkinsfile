@@ -32,4 +32,12 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            sh '''
+            set -x
+            make docker stop app
+            '''
+        }
+    }
 }
