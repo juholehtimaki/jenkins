@@ -5,15 +5,20 @@ pipeline {
         skipDefaultCheckout(true)
     }
  
+
     stages {
+        stage('Git') {
+            steps {
+                echo '> Checking out the Git version control ...'
+                checkout scm
+            }
+        }
         stage('Build') {
             steps {
-                container('tools') {
-                    sh '''
-                    set -x
-                    make docker-build
-                    '''
-                }
+                sh '''
+                set -x
+                make docker-build
+                '''
             }
         }
         stage('Test') {
