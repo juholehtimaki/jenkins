@@ -14,8 +14,8 @@ pipeline {
             }
         }
         stage('Build image') {
-            echo 'Building the image'
             steps {
+                echo '> Bulding the image'
                 sh '''
                 set -x
                 make docker-build
@@ -23,8 +23,8 @@ pipeline {
             }
         }
         stage('Run image') {
-            echo 'Running the image'
             steps {
+                echo 'Running the image'
                 sh '''
                 set -x
                 make docker-run
