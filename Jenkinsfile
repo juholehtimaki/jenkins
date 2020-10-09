@@ -45,7 +45,8 @@ pipeline {
         stage('Endpoint tests') {
             steps {
                 echo "Testing the service"
-                curl --silent --fail "curl http://localhost:3000" >/dev/null
+                response=`curl -k -s -X GET --url "http://localhost:3000"`
+                echo "${response}"
             }
         }
     }
