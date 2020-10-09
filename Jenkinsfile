@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image: 
-        }
-    }
+    agent any
  
     options {
         skipDefaultCheckout(true)
