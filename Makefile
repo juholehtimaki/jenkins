@@ -3,4 +3,4 @@ docker-build:
 docker-run:
 	docker run -t -d -p 3000:3000 app
 docker-stop:
-	docker stop $(docker ps -qf "name=app)"
+	docker stop $(docker ps -qf "name=app")
