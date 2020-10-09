@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image: 
+        }
+    }
  
     options {
         skipDefaultCheckout(true)
@@ -8,7 +12,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo '> Building the docker images ...'
+                container('tools') {
+                    sh '''
+                    set -x
+                    make docker-build
+                    '''
+                }
             }
         }
         stage('Test') {
