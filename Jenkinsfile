@@ -13,7 +13,8 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Build') {
+        stage('Build image') {
+            echo 'Building the image'
             steps {
                 sh '''
                 set -x
@@ -21,24 +22,13 @@ pipeline {
                 '''
             }
         }
-        stage('Test') {
+        stage('Run image') {
+            echo 'Running the image'
             steps {
-                echo '> Testing the docker containers ...'
-            }
-        }
-        stage('Push') {
-            steps {
-                echo '> Pushing the docker images ...'
-            }
-        }
-        stage('Destroy') {
-            steps {
-                echo '> Destroying the docker artifacts ...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo '> Deploying the application images ...'
+                sh '''
+                set -x
+                make docker-run
+                '''
             }
         }
     }
