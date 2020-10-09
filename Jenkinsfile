@@ -45,7 +45,10 @@ pipeline {
         stage('Endpoint tests') {
             steps {
                 echo "Testing the service"
+                sh '''
+                set -x
                 curl -k -s -X GET --url "http://localhost:3000"
+                '''
             }
         }
     }
